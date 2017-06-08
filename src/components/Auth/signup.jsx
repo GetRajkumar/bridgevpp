@@ -1,19 +1,25 @@
 import React, {Component} from 'react';
-import { reduxForm } from 'redux-form';
 import '../common.css';
-class SignIn extends Component {
+export default class Signup extends Component {
     render(){
         return(
             <div className="bgOverLay">
                 <div className="container">
     <div className="row">
-        <div className="col-md-6 col-md-offset-3 loginContainer">
+        <div className="col-md-8 col-md-offset-2 loginContainer">
             <div className="panel panel-default">
                 <div className="panel-heading">
-                  <strong>Login</strong>
+                  <strong>SignUp</strong>
                 </div>
                 <div className="panel-body">
                     <form className="form-horizontal">
+                         <div className="form-group">
+                        <label  className="col-sm-3 control-label">
+                           Name</label>
+                        <div className="col-sm-9">
+                            <input type="text" className="form-control" id="inputPassword3" placeholder="Name" required=""/>
+                        </div>
+                    </div>
                     <div className="form-group">
                         <label className="col-sm-3 control-label">
                             Email</label>
@@ -26,6 +32,31 @@ class SignIn extends Component {
                             Password</label>
                         <div className="col-sm-9">
                             <input type="password" className="form-control" id="inputPassword3" placeholder="Password" required=""/>
+                        </div>
+                    </div>
+                     <div className="form-group">
+                        <label  className="col-sm-3 control-label">
+                            Confirm Password</label>
+                        <div className="col-sm-9">
+                            <input type="password" className="form-control" id="inputPassword3" placeholder="Confirm Password" required=""/>
+                        </div>
+                    </div>
+                     <div className="form-group">
+                        <label  className="col-sm-3 control-label">
+                            Role</label>
+                        <div className="col-sm-9">
+                          <select className="form-control">
+                             <option>Maker</option>
+                            <option>Approver</option>
+                                <option>Admin</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className="form-group">
+                        <label  className="col-sm-3 control-label">
+                            AccessKey</label>
+                        <div className="col-sm-9">
+                            <input type="text" className="form-control" id="inputPassword3" placeholder="Access Key" required=""/>
                         </div>
                     </div>
                     <div className="form-group">
@@ -58,8 +89,3 @@ class SignIn extends Component {
         );
     }
 }
-
-export default reduxForm({
-    form:'signin',
-    fields:['email', 'password']
-})(SignIn);
