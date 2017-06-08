@@ -78,3 +78,12 @@ a:hover, a:active, a:focus {
 .panel-body {
     padding-bottom: 0px;
 }
+.loginContainer {
+    margin-top: 20%;
+}
+.bgOverLay{
+    background: url(../images/bg.jpg) top left no-repeat;
+    background-size: cover;
+    display: block;
+        height: 96vh;
+}
