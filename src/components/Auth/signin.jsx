@@ -10,7 +10,7 @@ class SignIn extends Component {
         <div className="col-md-6 col-md-offset-3 loginContainer">
             <div className="panel panel-default">
                 <div className="panel-heading">
-                  <strong>Login</strong>
+                  <strong>Sign in</strong>
                 </div>
                 <div className="panel-body">
                     <form className="form-horizontal">
