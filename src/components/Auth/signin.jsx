@@ -4,8 +4,18 @@ import '../common.css';
 import * as actions from '../../actions';
 class Signin extends Component {
     handleFormSubmit({email, password}){
-        console.log(email,password);
+      // console.log(email,password);
         // need to do something to log user in
+        this.props.signinUser({email, password})
+    }
+    renderAlert(){
+        if(this.props.errorMessage){
+            return(
+                <div className="alert alert-danger">
+                    {this.props.errorMessage}
+                </div>
+            );
+        }
     }
     render(){
         const { handleSubmit, fields: {email, password}} =this.props;
@@ -20,6 +30,7 @@ class Signin extends Component {
                 </div>
                 <div className="panel-body">
                     <form className="form-horizontal" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+                        {this.renderAlert()}
                     <div className="form-group">
                         <label className="col-sm-3 control-label">
                             Email</label>
@@ -64,5 +75,7 @@ class Signin extends Component {
         );
     }
 }
-
-export default reduxForm({ form:'signin', fields:['email','password']})(Signin);
+function mapStateToProps(state){
+    return { errorMessage: state.auth.error};
+}
+export default reduxForm({ form:'signin', fields:['email','password']}, mapStateToProps, actions)(Signin);

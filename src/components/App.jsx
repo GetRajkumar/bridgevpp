@@ -4,7 +4,7 @@ class App extends Component {
     render(){
         return (
             <div>
-                Bridge VPP
+               
                {this.props.children}
                      <Footer/>
             </div>
