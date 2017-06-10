@@ -87,3 +87,7 @@ a:hover, a:active, a:focus {
     display: block;
         height: 96vh;
 }
+.btn-group-sm>.btn, .btn-sm {
+
+    margin-right: 10px;
+}

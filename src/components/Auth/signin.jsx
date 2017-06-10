@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { reduxForm } from 'redux-form';
 import '../common.css';
 import * as actions from '../../actions';
+import { Link } from 'react-router';
 class Signin extends Component {
     handleFormSubmit({email, password}){
       // console.log(email,password);
@@ -66,7 +67,7 @@ class Signin extends Component {
                     </form>
                 </div>
                 <div className="panel-footer">
-                    Not Registered? <a href="">Register here</a></div>
+                    Not Registered? <Link to="/signup">Register here</Link></div>
             </div>
         </div>
     </div>

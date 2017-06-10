@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { reduxForm } from 'redux-form';
 import '../common.css';
 import * as actions from '../../actions';
+import { Link } from 'react-router';
 class Signup extends Component {
      handleFormSubmit({name, email, password, role, accesskey}){
         //console.log(name, email, password, role, accesskey);
@@ -73,7 +74,7 @@ class Signup extends Component {
                     <div className="form-group last">
                         <div className="col-sm-offset-3 col-sm-9">
                             <button type="submit" className="btn btn-success btn-sm">
-                                Sign in</button>
+                                Sign Up</button>
                                  <button type="reset" className="btn btn-default btn-sm">
                                 Reset</button>
                         </div>
@@ -81,7 +82,7 @@ class Signup extends Component {
                     </form>
                 </div>
                 <div className="panel-footer">
-                    Not Registered? <a href="">Register here</a></div>
+                    After Signup is done. Please goto  <Link to="/signin">Signin</Link></div>
             </div>
         </div>
     </div>
