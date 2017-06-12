@@ -45,16 +45,7 @@ class Signin extends Component {
                             <input type="password" className="form-control" {...password}  placeholder="Password" required=""/>
                         </div>
                     </div>
-                    <div className="form-group">
-                        <div className="col-sm-offset-3 col-sm-9">
-                            <div className="checkbox">
-                                <label>
-                                    <input type="checkbox"/>
-                                    Remember me
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+                  
                     <div className="form-group last">
                         <div className="col-sm-offset-3 col-sm-9">
                             <button action="submit" className="btn btn-success btn-sm">
