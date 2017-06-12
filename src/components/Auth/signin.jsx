@@ -65,4 +65,4 @@ class Signin extends Component {
     }
 }
 
-export default reduxForm({ form:'signin', fields:['email','password']})(Signin);
+export default reduxForm({ form:'signin', fields:['email','password']},null, actions)(Signin);
