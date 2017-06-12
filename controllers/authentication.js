@@ -80,10 +80,7 @@ exports.vendor = function(req, res, next) {
       if (err) { return next(err); }
 
       // Repond to request indicating the user was created
-      res.json({ 'success': true });
+      res.json({ 'success': 'Vendor successfully added on vendor bucket!!!' });
     });
    });
-
-
-   
 }
