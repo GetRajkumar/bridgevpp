@@ -17,6 +17,15 @@ class Signup extends Component {
             );
         }
     }
+     renderAlert1(){
+        if(this.props.success){
+            return(
+                <div className="alert alert-success">
+                    {this.props.success}
+                </div>
+            );
+        }
+    }
     render(){
          const { handleSubmit, fields: {name, email, password, role, accesskey}} =this.props;
         return(
@@ -30,6 +39,7 @@ class Signup extends Component {
                 </div>
                 <div className="panel-body">
                          {this.renderAlert()}
+                          {this.renderAlert1()}
                     <form className="form-horizontal" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
                          <div className="form-group">
                         <label  className="col-sm-3 control-label">
@@ -92,6 +102,11 @@ class Signup extends Component {
     }
 }
 function mapStateToProps(state){
+    if(state.auth.success ==='200'){
+                return{ success: 'Signup done successfully. Please do signin'}
+    }
+    else{
     return { errorMessage: state.auth.error};
+    }
 }
 export default reduxForm({ form:'signup', fields:['name','email','password','role','accesskey' ]}, mapStateToProps, actions)(Signup);

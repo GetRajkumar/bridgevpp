@@ -36,3 +36,17 @@ a.active {
 nav.navbar.navbar-default {
     margin-bottom: 0px;
 }
+span.userRole {
+    position: absolute;
+    display: block;
+    text-align: right;
+    font-size: 10px;
+    color: #c1c1c1;
+    line-height: 5px;
+   right: 25px;
+}
+
+a.dropdown-toggle.cusUserDetails {
+      position: relative;
+    margin-top: -4px;
+}

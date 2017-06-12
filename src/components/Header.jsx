@@ -3,6 +3,7 @@ import Logo from '../images/logo.png';
 import './HeaderStyle.css';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import * as actions from '../actions';
 
 
 class Header extends Component {
@@ -20,7 +21,17 @@ if(this.props.authenticated){
     
 
   }
-  render() {
+   roleLinks(){
+     var Role = localStorage.getItem('role');
+     console.log(Role);
+     return(Role);
+   }
+   nameLinks(){
+     var name = localStorage.getItem('name');
+     console.log(name);
+      return(name);
+   }
+ render() {
     return (<div>
 
       <nav className="navbar navbar-default">
@@ -40,7 +51,7 @@ if(this.props.authenticated){
            
             <ul className="nav navbar-nav navbar-right">
               <li className="dropdown">
-                <a className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">John Newton<span className="caret"></span></a>
+                <a className="dropdown-toggle cusUserDetails" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span>{this.nameLinks()}</span><span className="caret"></span><span className="userRole">{this.roleLinks()}</span></a>
                 <ul className="dropdown-menu">
       
                   <li><Link to="/signout">Sign Out</Link></li>
@@ -60,6 +71,7 @@ function mapStateToProps(state){
   return {
     authenticated: state.auth.authenticated
   }
+ 
 }
 
-export default connect(mapStateToProps) (Header);
+export default connect(mapStateToProps, actions) (Header);

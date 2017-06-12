@@ -4,13 +4,13 @@ const config = require('../config');
 
 function tokenForUser(user) {
   const timestamp = new Date().getTime();
-  return jwt.encode({ sub: user.id, role: user.role, iat: timestamp }, config.secret);
+  return jwt.encode({ sub: user.id, name:user.name, role: user.role, iat: timestamp }, config.secret);
 }
 
 exports.signin = function(req, res, next) {
   // User has already had their email and password auth'd
   // We just need to give them a token
-  res.send({ token: tokenForUser(req.user) });
+  res.send({ token: tokenForUser(req.user), message:'200'});
 }
 
 exports.signup = function(req, res, next) {
@@ -48,7 +48,7 @@ exports.signup = function(req, res, next) {
       if (err) { return next(err); }
 
       // Repond to request indicating the user was created
-      res.json({ token: tokenForUser(user) });
+      res.json({ token: tokenForUser(user), message:'200'});
     });
   });
 }

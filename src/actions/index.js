@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { browserHistory} from 'react-router';
-import { AUTH_USER, UNAUTH_USER, AUTH_ERROR } from './types';
+import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, AUTH_REG} from './types';
+import  jwtDecode from 'jwt-decode';
 
 const ROOT_URL = "http://localhost:2500";
 
@@ -14,9 +15,17 @@ export function signinUser({email, password}){
     dispatch({ type: AUTH_USER });
     // Save the JWT token 
     localStorage.setItem('token', response.data.token);
-    // Redirect to the route '/dahsboard'
 
+
+    // Decode the token to get user details
+     const token = localStorage.getItem('token');
+     const decoded = jwtDecode(token);
+     localStorage.setItem('name', decoded.name);
+     localStorage.setItem('role', decoded.role);
+
+    // Redirect to the route '/dahsboard'
         browserHistory.push('/dashboard');
+     
     })
     .catch(() =>{
         dispatch(authError('Bad signin Information'));
@@ -35,7 +44,12 @@ export function signupUser({name, email, password, role, accesskey}){
     axios.post(`${ROOT_URL}/signup`, {name, email, password, role, accesskey})
     .then(response =>{
             //signup success message
-     
+     if(response.data.message === '200'){
+         dispatch({ type: AUTH_REG, payload: response.data.message});
+     }
+     else{
+         console.log('200');
+     }
     })
  .catch(() =>{
         dispatch(authError('signup data Invaild'));
@@ -56,6 +70,8 @@ export function authError(error){
 
 export function signoutUser(){
     localStorage.removeItem('token');
+      localStorage.removeItem('name');
+      localStorage.removeItem('role');
     return { type: UNAUTH_USER }
 
 }
