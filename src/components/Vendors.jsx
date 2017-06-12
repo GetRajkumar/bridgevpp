@@ -1,12 +1,17 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 import Header from './Header';
 import VendorModal from './vendor_modal';
-export default class Vendors extends Component {
+import * as actions from '../actions';
+class Vendors extends Component {
+        componentWillMount(){
+                this.props.fetchMessage();
+        }
         render() {
                 return <div>
                         <Header/>
                         <div className="container-fluid">
-                                <h2>Vendors <div className="pull-right panel-btn">
+                                <h2>Vendors<div className="pull-right panel-btn">
                                                                         <button className="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal">New Vendor</button>
                                                                 </div></h2>
                                 <div className="row">
@@ -47,3 +52,9 @@ export default class Vendors extends Component {
                 </div>
         }
 }
+function mapStateToProps(state){
+        return { 
+                message: state.auth.message
+        };
+}
+export default connect(mapStateToProps, actions) (Vendors);

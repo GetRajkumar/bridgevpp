@@ -12,4 +12,5 @@ module.exports = function(app) {
   app.post('/signin', requireSignin, Authentication.signin);
   app.post('/signup', Authentication.signup);
     app.post('/vendor', requireAuth, Authentication.vendor);
+      app.get('/vendor', requireAuth, Authentication.Fetchvendor);
 }

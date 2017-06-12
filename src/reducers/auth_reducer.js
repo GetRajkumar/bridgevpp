@@ -1,4 +1,4 @@
-import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, AUTH_REG, AUTH_NAME} from '../actions/types';
+import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, AUTH_REG, FETCH_MESSAGE} from '../actions/types';
 
 export default function(state = {}, action){
     switch(action.type){
@@ -14,8 +14,8 @@ export default function(state = {}, action){
            case AUTH_REG:
            return{...state, success: action.payload};
 
-            case AUTH_NAME:
-           return{...state, name: action.payload};
+            case FETCH_MESSAGE:
+           return{...state, message: action.payload};
            
     }
     return state;

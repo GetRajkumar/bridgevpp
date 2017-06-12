@@ -80,7 +80,11 @@ exports.vendor = function(req, res, next) {
       if (err) { return next(err); }
 
       // Repond to request indicating the user was created
-      res.json({ 'success': 'Vendor successfully added on vendor bucket!!!' });
+      res.json({ 'success': 'Vendor successfully added on vendors bucket!!!' });
     });
    });
+}
+
+exports.Fetchvendor = function(req, res, next) {
+  
 }
