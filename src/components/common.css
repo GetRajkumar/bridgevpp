@@ -79,11 +79,15 @@ a:hover, a:active, a:focus {
     padding-bottom: 0px;
 }
 .loginContainer {
-    margin-top: 20%;
+    margin-top: 10%;
 }
 .bgOverLay{
     background: url(../images/bg.jpg) top left no-repeat;
     background-size: cover;
     display: block;
         height: 96vh;
+}
+.btn-group-sm>.btn, .btn-sm {
+
+    margin-right: 10px;
 }

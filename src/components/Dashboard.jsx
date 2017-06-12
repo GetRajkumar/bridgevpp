@@ -4,7 +4,7 @@ import Header from './Header';
 export default class Dashboard extends Component {
         render() {
                 return <div>
-                        <Header/>
+                      <Header/>
                         <div className="container-fluid">
                                 <h2>Dashboard</h2>
                                 <div className="row">

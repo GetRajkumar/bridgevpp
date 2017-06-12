@@ -1,10 +1,25 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
 import Logo from '../images/logo.png';
 import './HeaderStyle.css';
+import { Link } from 'react-router';
+import { connect } from 'react-redux';
 
 
-export default class Header extends Component {
+class Header extends Component {
+  renderLinks(){
+if(this.props.authenticated){
+  return(
+ <ul className="nav navbar-nav">
+              <li><Link activeClassName="active" to="Dashboard">DashBoard </Link></li>
+              <li><Link activeClassName="active" to="/addbill">Add Bill</Link></li>
+              <li><Link activeClassName="active" to="/billstatus">Bill Status</Link></li>
+              <li><Link activeClassName="active" to="/vendors">Vendors</Link></li>
+      </ul>
+       );
+           }
+    
+
+  }
   render() {
     return (<div>
 
@@ -20,20 +35,15 @@ export default class Header extends Component {
             <a className="navbar-brand" href=""><img className="logo" alt="logo" src={Logo} /></a>
           </div>
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul className="nav navbar-nav">
-              <li><NavLink exact activeClassName="active" to="/">DashBoard </NavLink></li>
-              <li><NavLink activeClassName="active" to="/addbill">Add Bill</NavLink></li>
-              <li><NavLink activeClassName="active" to="/billstatus">Bill Status</NavLink></li>
-              <li><NavLink activeClassName="active" to="/vendors">Vendors</NavLink></li>
-            </ul>
+            
+              {this.renderLinks()}
+           
             <ul className="nav navbar-nav navbar-right">
               <li className="dropdown">
                 <a className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">John Newton<span className="caret"></span></a>
                 <ul className="dropdown-menu">
-                  <li><a href="">Profile</a></li>
-                  <li><a href="">Settings</a></li>
-                  <li><a href="">About</a></li>
-                  <li><a href="" >Log Out</a></li>
+      
+                  <li><Link to="/signout">Sign Out</Link></li>
 
                 </ul>
               </li>
@@ -45,3 +55,11 @@ export default class Header extends Component {
     );
   }
 }
+
+function mapStateToProps(state){
+  return {
+    authenticated: state.auth.authenticated
+  }
+}
+
+export default connect(mapStateToProps) (Header);
