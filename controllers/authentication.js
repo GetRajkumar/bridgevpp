@@ -85,7 +85,7 @@ exports.vendor = function(req, res, next) {
     });
    });
 }
-<<<<<<< HEAD
+
 exports.Fetchvendor = function(req, res, next) {
    Vendor.find({}, function(err, fetchData){
      if (err) { return next(err); }
@@ -93,9 +93,5 @@ exports.Fetchvendor = function(req, res, next) {
          res.status(200).json(fetchData);  
      }
    });
-=======
 
-exports.Fetchvendor = function(req, res, next) {
-  
->>>>>>> origin/master
 }

@@ -2,18 +2,10 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import Header from './Header';
 import VendorModal from './vendor_modal';
-<<<<<<< HEAD
-import { connect } from 'react-redux';
 import * as actions from '../actions';
 class Vendors extends Component {
         componentWillMount(){
              this.props.FetchVendor();   
-=======
-import * as actions from '../actions';
-class Vendors extends Component {
-        componentWillMount(){
-                this.props.fetchMessage();
->>>>>>> origin/master
         }
         render() {
                 return <div>
@@ -63,12 +55,9 @@ class Vendors extends Component {
         }
 }
 function mapStateToProps(state){
-<<<<<<< HEAD
+
         return { datavendor: state.auth.data}
-=======
-        return { 
-                message: state.auth.message
-        };
->>>>>>> origin/master
-}
+ };
+
+
 export default connect(mapStateToProps, actions) (Vendors);
