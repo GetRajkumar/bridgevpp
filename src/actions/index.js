@@ -1,6 +1,10 @@
 import axios from 'axios';
 import { browserHistory} from 'react-router';
+<<<<<<< HEAD
 import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, AUTH_REG, FETCH_VENDOR} from './types';
+=======
+import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, AUTH_REG, FETCH_MESSAGE} from './types';
+>>>>>>> origin/master
 import  jwtDecode from 'jwt-decode';
 
 const ROOT_URL = "http://localhost:2500";
@@ -93,4 +97,21 @@ export function signoutUser(){
       localStorage.removeItem('role');
     return { type: UNAUTH_USER }
 
+}
+
+export function fetchMessage (){
+    return function(dispatch){
+      axios.get(ROOT_URL, 
+      {
+          headers:{ authorization: localStorage.getItem('token')}
+      }
+      )
+      .then(response =>{
+        dispatch({
+            type: FETCH_MESSAGE,
+            payload: response.data.message
+        })
+      });
+    
+    }
 }
