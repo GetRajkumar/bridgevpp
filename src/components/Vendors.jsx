@@ -1,7 +1,12 @@
 import React, {Component} from 'react';
 import Header from './Header';
 import VendorModal from './vendor_modal';
-export default class Vendors extends Component {
+import { connect } from 'react-redux';
+import * as actions from '../actions';
+class Vendors extends Component {
+        componentWillMount(){
+             this.props.FetchVendor();   
+        }
         render() {
                 return <div>
                         <Header/>
@@ -11,9 +16,11 @@ export default class Vendors extends Component {
                                                                 </div></h2>
                                 <div className="row">
                                         <div className="col-md-4">
+
                                                 <div className="panel panel-default">
                                                         <div className="panel-heading">SriRam Enterprises</div>
                                                         <div className="panel-body row">
+                                                                {this.props.datavendor}
                                                                 <div className="col-sm-6">
                                                                         <div className="block label-control">Product
                                                                         </div>
@@ -47,3 +54,7 @@ export default class Vendors extends Component {
                 </div>
         }
 }
+function mapStateToProps(state){
+        return { datavendor: state.auth.data}
+}
+export default connect(mapStateToProps, actions) (Vendors);

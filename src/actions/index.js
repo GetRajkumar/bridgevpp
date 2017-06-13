@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { browserHistory} from 'react-router';
-import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, AUTH_REG} from './types';
+import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, AUTH_REG, FETCH_VENDOR} from './types';
 import  jwtDecode from 'jwt-decode';
 
 const ROOT_URL = "http://localhost:2500";
@@ -60,6 +60,25 @@ export function signupUser({name, email, password, role, accesskey}){
 
      }
 }
+
+export function FetchVendor(){
+     return function(dispatch){
+          axios.get(`${ROOT_URL}/Fetchvendor`,{
+              headers:{authorization:localStorage.getItem('token')}
+          })
+          .then(response =>{
+            
+                  console.log(response);
+               dispatch({ type: FETCH_VENDOR, payload: response.data});
+            
+          }) 
+           .catch(() =>{
+        dispatch(authError('Fetchvendor data not coming'));
+    });
+     }
+}
+
+
 
 export function authError(error){
         return{

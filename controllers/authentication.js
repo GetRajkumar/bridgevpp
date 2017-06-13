@@ -2,6 +2,7 @@ const jwt = require('jwt-simple');
 const User = require('../models/user');
 const Vendor = require('../models/vendor');
 const config = require('../config');
+const mongo = require('mongodb');
 
 function tokenForUser(user) {
   const timestamp = new Date().getTime();
@@ -82,5 +83,13 @@ exports.vendor = function(req, res, next) {
       // Repond to request indicating the user was created
       res.json({ 'success': 'Vendor successfully added on vendor bucket!!!' });
     });
+   });
+}
+exports.Fetchvendor = function(req, res, next) {
+   Vendor.find({}, function(err, fetchData){
+     if (err) { return next(err); }
+     if(fetchData.length != '0'){
+         res.status(200).json(fetchData);  
+     }
    });
 }
