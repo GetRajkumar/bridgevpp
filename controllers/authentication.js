@@ -90,7 +90,7 @@ exports.Fetchvendor = function(req, res, next) {
    Vendor.find({}, function(err, fetchData){
      if (err) { return next(err); }
      if(fetchData.length != '0'){
-         res.status(200).json(fetchData);  
+        res.json(fetchData);
      }
    });
 
