@@ -54,19 +54,23 @@ exports.signup = function(req, res, next) {
     });
   });
 }
-exports.vendor = function(req, res, next) {
+exports.addvendor = function(req, res, next) {
    const name =  req.body.name; 
    const vendorid =  req.body.vendorid; 
    const email =  req.body.email; 
    const product =  req.body.product; 
    const phone =  req.body.phone; 
    const address =  req.body.address; 
+   const gst = req.body.gst;
    const pannumber =  req.body.pannumber; 
+  if(!name || !vendorid || !email || !product || !phone || !address || !gst || !pannumber) {
+     return res.send({ messagecode: '1001' });// Must provide all data
+  }
    Vendor.findOne({ name: name }, function(err, existingUser) {
      if (err) { return next(err); }
-
+     
      if (existingUser) {
-      return res.status(422).send({ error: 'Vendor is in use' });
+      return res.send({ messagecode: '1002' });// Vendor in Use
     }
      const vendor = new Vendor({
       name: name,
@@ -75,13 +79,14 @@ exports.vendor = function(req, res, next) {
       product:product,
       phone: phone,
       address: address,
+      gst:gst,
       pannumber:pannumber
     });
      vendor.save(function(err) {
       if (err) { return next(err); }
 
       // Repond to request indicating the user was created
-      res.json({ 'success': 'Vendor successfully added on vendors bucket!!!' });
+      res.json({ messagecode: '1000'});//Vendor successfully added on vendors bucket!!!
     });
    });
 }

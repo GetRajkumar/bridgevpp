@@ -11,7 +11,7 @@ module.exports = function(app) {
   });
   app.post('/signin', requireSignin, Authentication.signin);
   app.post('/signup', Authentication.signup);
-    app.post('/vendor', requireAuth, Authentication.vendor);
+    app.post('/addvendor', requireAuth, Authentication.addvendor);
     app.get('/Fetchvendor', requireAuth, Authentication.Fetchvendor);
 
 }

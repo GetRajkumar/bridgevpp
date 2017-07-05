@@ -91,3 +91,6 @@ a:hover, a:active, a:focus {
 
     margin-right: 10px;
 }
+.panel-default>.panel-heading {
+    text-transform: capitalize;
+}

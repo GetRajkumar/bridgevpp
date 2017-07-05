@@ -9,6 +9,7 @@ const vendorSchema = new Schema({
   product: { type: String },
   phone: { type: Number},
   address: String,
+  gst: String,
   pannumber: String
 });
 
