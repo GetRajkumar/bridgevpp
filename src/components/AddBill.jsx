@@ -79,8 +79,7 @@ class AddBill extends Component {
                </div>
             </div>
              <div className="pull-right clearfix">
-                     <button type='submit' className="btn btn-primary">Save the bill</button>
-                    
+                     <button type='submit' className="btn btn-primary">Save the bill</button> 
                   </div>
              </form>
          </div>
